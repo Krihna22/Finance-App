@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+.venv/
+
+# Instance Folder
+instance/
+
+# IDE / Editor specific files
+.vscode/
+.idea/
+*.swp
