@@ -1,23 +1,16 @@
-/* Убираем стандартные отступы */
+/* frontend/src/index.css */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* --- НАШ НОВЫЙ ФОН --- */
-  /* Фоновый цвет на случай, если картинка не загрузится */
-  background-color: #0d1117; 
-  /* Ссылка на красивый абстрактный фон, похожий на референс */
-  background-image: url('https://image.fonwall.ru/o/uo/abstraction-minimalism-dark-background.jpg?auto=compress&fit=crop&w=1920&h=768&domain=img3.fonwall.ru');
-  background-size: cover; /* Картинка растягивается на весь экран */
-  background-position: center; /* Центрируем картинку */
-  background-attachment: fixed; /* Фон не двигается при прокрутке */
-  min-height: 100vh;
-  position: relative;
+  /* Очень тёмный, но не абсолютно чёрный сине-серый фон */
+  background-color: #111827; /* <-- Новый, более интересный цвет фона */
 }
 
-/* Создаём полупрозрачный тёмный слой поверх картинки, чтобы текст лучше читался */
+/* Этот псевдо-элемент мы пока оставим, но сделаем его полностью прозрачным.
+  Он может пригодиться в будущем, если мы захотим добавить эффекты.
+*/
 body::before {
   content: '';
   position: absolute;
@@ -25,6 +18,6 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(13, 17, 23, 0.8); /* Тёмный слой с 80% непрозрачности */
+  background-color: rgba(13, 17, 23, 0); /* Прозрачный слой */
   z-index: -1;
 }

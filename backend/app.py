@@ -265,6 +265,41 @@ def get_transactions(current_user):
     return jsonify({'transactions': output})
 
 
+# --- НОВЫЙ КОД ДЛЯ ОТЧЁТОВ ---
+
+@app.route('/reports/expense-summary', methods=['GET'])
+@token_required
+def expense_summary(current_user):
+    """
+    Эндпоинт для получения суммарных расходов по категориям за всё время.
+    """
+    try:
+        # Выполняем запрос к БД:
+        # 1. Выбираем имя Категории и Сумму Транзакций.
+        # 2. Объединяем (join) таблицы Транзакций и Категорий.
+        # 3. Фильтруем транзакции: только расходы ('expense') и только для текущего пользователя.
+        # 4. Группируем результаты по имени категории.
+        summary = db.session.query(
+            Category.name,
+            db.func.sum(Transaction.amount)
+        ).join(Category).filter(
+            Transaction.user_id == current_user.id,
+            Transaction.type == 'expense'
+        ).group_by(Category.name).all()
+
+        report_data = []
+        for category_name, total_amount in summary:
+            report_data.append({
+                'category': category_name,
+                'total': total_amount / 100 # Переводим из копеек в рубли
+            })
+            
+        return jsonify(report_data)
+
+    except Exception as e:
+        return jsonify({'message': 'Could not generate report', 'error': str(e)}), 500
+
+
 # --- RUN APPLICATION ---
 if __name__ == '__main__':
     app.run(debug=True)
