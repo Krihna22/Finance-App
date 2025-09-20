@@ -1,0 +1,30 @@
+/* Убираем стандартные отступы */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* --- НАШ НОВЫЙ ФОН --- */
+  /* Фоновый цвет на случай, если картинка не загрузится */
+  background-color: #0d1117; 
+  /* Ссылка на красивый абстрактный фон, похожий на референс */
+  background-image: url('https://image.fonwall.ru/o/uo/abstraction-minimalism-dark-background.jpg?auto=compress&fit=crop&w=1920&h=768&domain=img3.fonwall.ru');
+  background-size: cover; /* Картинка растягивается на весь экран */
+  background-position: center; /* Центрируем картинку */
+  background-attachment: fixed; /* Фон не двигается при прокрутке */
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Создаём полупрозрачный тёмный слой поверх картинки, чтобы текст лучше читался */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(13, 17, 23, 0.8); /* Тёмный слой с 80% непрозрачности */
+  z-index: -1;
+}

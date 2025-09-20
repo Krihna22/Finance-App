@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from flask_cors import CORS
 import jwt
 import datetime
 from functools import wraps
@@ -13,6 +14,7 @@ from models import User, Account, Category, Transaction
 
 # --- APP CONFIGURATION ---
 app = Flask(__name__)
+CORS(app)
 # Секретный ключ для подписи JWT токенов
 app.config['SECRET_KEY'] = 'your_super_secret_key_change_in_production'
 # Строка подключения к базе данных PostgreSQL

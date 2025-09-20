@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App, { AuthProvider } from './App.jsx' // <-- Добавили AuthProvider
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AuthProvider> {/* <-- Наша новая "обёртка" */}
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
 )
