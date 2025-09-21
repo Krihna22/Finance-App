@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // --- НОВЫЙ ИМПОРТ ДЛЯ УВЕДОМЛЕНИЙ ---
 import toast, { Toaster } from 'react-hot-toast';
+import ReportsPage from './pages/ReportsPage';
 
 // --- Стили ---
 const styles = {
@@ -44,7 +45,7 @@ const styles = {
 };
 
 // --- КОНТЕКСТ АУТЕНТИФИКАЦИИ ---
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   useEffect(() => {
@@ -156,7 +157,7 @@ const DashboardPage = () => {
   );
 };
 
-const ReportsPage = () => <h1>Страница Отчётов</h1>;
+
 
 const Sidebar = () => (
     <div style={styles.sidebar}>
